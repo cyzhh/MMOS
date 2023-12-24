@@ -240,6 +240,25 @@ def topk(main_path, remain_path, output_path, k=3):
                     if line:
                         out_file.write(line) 
 
+def read_data(main_path, remain_path):
+    main_data = {}
+    remain_data = defaultdict(dict)
+
+    with open(main_path, 'r') as file:
+        for line in file:
+            data = json.loads(line)
+            processed_code = process_data(data['completion'])
+            main_data[data['source']] = processed_code
+
+    with open(remain_path, 'r') as file:
+        for line in file:
+            data = json.loads(line)
+            processed_code = process_data(data['completion'])
+            source = data['source']
+            remain_data[source][processed_code] = line
+
+    return main_data, remain_data
+
 def sameanswer(input_file_path,output_file_path):
     data = []
     with open(input_file_path, 'r', encoding='utf-8') as f:
@@ -635,7 +654,6 @@ def distribute_perturb1(number, mean, std_dev):
     X = np.random.normal(mean, std_dev)
     perturbed_number = number + int(X)
     return perturbed_number
-
 
 def replace_numbers(text, number_mapping, numbers_set):
     def replacer(match):
