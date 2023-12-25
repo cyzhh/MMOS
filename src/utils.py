@@ -11,8 +11,16 @@ import astunparse
 from contextlib import redirect_stdout
 from tqdm import tqdm
 from collections import Counter, defaultdict
-from concurrent.futures import ProcessPoolExecutor
-from grader import math_equal
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed
+from .grader import math_equal
+
+import copy
+import argparse
+import sys
+from sympy import symbols, Eq, solve, Rational, sympify
+
+
+
 
 def process(input_file, output_file, mu, sigma):
     with open(input_file, 'r', encoding='utf-8') as f, open(output_file, 'w', encoding='utf-8') as out:  
@@ -826,7 +834,7 @@ def run_python_code(python_code, idx):
     try:
         return execute()
     except Exception as e:
-        logging.error("idx %s: An error occurred while running python code: %s", idx, e)
+        print(e)
         return None
 
 def extract_lines_by_idx(input_file, idx_list, output_file):
@@ -909,3 +917,27 @@ def save_original_data(input_file, idx_set, output_file):
                 json.dump(data, out, ensure_ascii=False)
                 out.write('\n')
     print('save complete!')
+    
+def merge_jsonl(files, output_file):
+    all_data = []
+
+    for file in files:
+        if os.path.exists(file) and os.path.isfile(file):
+            with open(file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    try:
+                        data = json.loads(line.strip())
+                        all_data.append(data)
+                    except json.JSONDecodeError:
+                        print(f"Warning: Could not decode line in file {file}. Skipping...")
+        else:
+            print(f"Warning: File {file} does not exist or is not a file. Skipping...")
+
+    with open(output_file, 'w', encoding='utf-8') as out_f:
+        for idx, data in enumerate(all_data):
+            json.dump(data, out_f)
+            out_f.write('\n')
+
+    print(f"Merge completed. Total data num {idx+1}. Data written to {output_file}")
+    
+
