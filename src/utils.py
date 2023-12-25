@@ -5,8 +5,15 @@ import io
 import numpy as np
 import timeout_decorator
 import logging
+import Levenshtein
+import ast
+import astunparse
 from contextlib import redirect_stdout
 from tqdm import tqdm
+from collections import Counter, defaultdict
+from concurrent.futures import ProcessPoolExecutor
+from grader import math_equal
+
 
 def process(input_file, output_file, mu, sigma):
     with open(input_file, 'r', encoding='utf-8') as f, open(output_file, 'w', encoding='utf-8') as out:  
@@ -240,6 +247,41 @@ def topk(main_path, remain_path, output_path, k=3):
                     if line:
                         out_file.write(line) 
 
+def build_paths(main_data, remain_data, k):
+    all_paths = {}
+    with ProcessPoolExecutor() as executor:
+        # 创建所有任务
+        futures = {executor.submit(build_greedy_path_for_source, main_completion, remain_data[source], k): source 
+                   for source, main_completion in main_data.items() if source in remain_data}
+
+        # 获取结果
+        for future in tqdm(futures, desc="Processing sources"):
+            source = futures[future]
+            path = future.result()
+            all_paths[source] = path
+
+    return all_paths
+
+def build_greedy_path_for_source(main_completion, remain_completions_dict, k):
+    path = [main_completion]
+    path_distances = {comp: Levenshtein.distance(main_completion, comp) for comp in remain_completions_dict}
+
+    while len(path) < k and remain_completions_dict:
+        # 选择下一个点
+        next_completion = max(remain_completions_dict, key=lambda comp: path_distances[comp])
+        next_distance = path_distances[next_completion]
+        
+        # 更新路径和距离
+        path.append(next_completion)
+        del remain_completions_dict[next_completion]
+        del path_distances[next_completion]
+
+        # 仅更新剩余点的累积距离
+        for comp in remain_completions_dict:
+            path_distances[comp] += Levenshtein.distance(next_completion, comp)
+
+    return path
+
 def read_data(main_path, remain_path):
     main_data = {}
     remain_data = defaultdict(dict)
@@ -258,6 +300,111 @@ def read_data(main_path, remain_path):
             remain_data[source][processed_code] = line
 
     return main_data, remain_data
+
+def process_data(code):
+    # 使用 AST 替换变量和函数名
+    try:
+        updated_code = replace_var_names_in_code_blocks(code)
+        if updated_code != "1":
+            return updated_code
+    except Exception as e:
+        print(f"Error processing code: {e}")
+    return code
+
+def replace_var_names(code):
+    python_keywords = set([
+        'False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await',
+        'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except',
+        'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is',
+        'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return',
+        'try', 'while', 'with', 'yield', 'print'
+    ])
+
+    def replace_name(node, var_dict_stack, func_dict_stack, current_var_index, current_func_index):
+        if isinstance(node, ast.FunctionDef):
+            name = node.name
+            if name not in python_keywords and name not in func_dict_stack[-1]:
+                new_name = string.ascii_lowercase[current_func_index]  # 使用小写字母替换函数名
+                func_dict_stack[-1][name] = new_name
+                current_func_index = (current_func_index + 1) % 26
+                node.name = new_name
+            var_dict_stack.append({})
+            func_dict_stack.append({})
+
+        elif isinstance(node, ast.Call):
+            func_name = getattr(node.func, 'id', None)
+            if func_name:
+                for func_dict in func_dict_stack[::-1]:
+                    if func_name in func_dict:
+                        node.func.id = func_dict[func_name]
+                        break
+
+        elif isinstance(node, ast.Name):
+            name = node.id
+            if isinstance(node.ctx, ast.Load):
+                for var_dict in var_dict_stack[::-1]:
+                    if name in var_dict:
+                        node.id = var_dict[name]
+                        break
+            elif name not in python_keywords and name not in var_dict_stack[-1]:
+                new_name = string.ascii_uppercase[current_var_index]  # 使用大写字母替换变量名
+                var_dict_stack[-1][name] = new_name
+                current_var_index = (current_var_index + 1) % 26
+                node.id = new_name
+
+        for child in ast.iter_child_nodes(node):
+            current_var_index, current_func_index = replace_name(child, var_dict_stack, func_dict_stack, current_var_index, current_func_index)
+
+        if isinstance(node, ast.FunctionDef):
+            var_dict_stack.pop()
+            func_dict_stack.pop()
+
+        return current_var_index, current_func_index
+
+    
+    code = fixed_code(code)
+    code = code.replace('\"\"\"\"','\"\"\"')
+    
+    
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        print("Syntax error in the code. Skipping this block.")
+        with open('/data/cyz/nodup/tora-code-13b_u100/error_codes.jsonl', 'a') as file:
+            json_record = json.dumps({"error_code": code})
+            file.write(json_record + '\n')
+        return 1
+    
+    var_dict_stack = [{}]
+    func_dict_stack = [{}]
+    current_var_index = 0
+    current_func_index = 0
+
+    replace_name(tree, var_dict_stack, func_dict_stack, current_var_index, current_func_index)
+    return astunparse.unparse(tree)
+
+def replace_var_names_in_code_blocks(text):
+    # 找到所有的代码块
+    code_blocks = re.findall(r'```python(.*?)```', text, re.DOTALL)
+    
+    # 处理每个代码块
+    for i, code_block in enumerate(code_blocks):
+        processed_code = replace_var_names(code_block.strip())  # 确保去掉代码块两端的空白字符
+        if processed_code != 1:
+            text = text.replace(f'```python{code_block}```', f'```python\n{processed_code}\n```', 1)
+        else:
+            text = "1"
+        
+    return text   
+
+def fixed_code(code):
+    # Regular expression pattern to match '\n   ' but not '\n    '
+    pattern = re.compile(r'\n {3}(?! )')
+
+    # Replace occurrences of '\n   ' with '\n    '
+    fixed_code = re.sub(pattern, '\n    ', code)
+
+    return fixed_code
 
 def sameanswer(input_file_path,output_file_path):
     data = []
@@ -709,7 +856,7 @@ def extract_prompt(input_file_path, output_file_path):
             extracted_data = {
                 "question": question,
                 "gt_cot": "0",
-                "gt": data['gt'],
+                "gt": data['pred'],
                 "idx": data["source"]
             }
             json.dump(extracted_data, f_out, ensure_ascii=False)
