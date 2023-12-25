@@ -12,13 +12,12 @@
 
 
 - ✅ 
-- 🔲 数据集的生成 
+- 🔲 
 
 ## Generate 
 
+    bash scripts/infer.sh
     bash scripts/generate.sh
-    python -m src.nodup --save
-
 
 ## Attack
 
