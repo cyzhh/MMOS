@@ -12,9 +12,10 @@ import Levenshtein
 import textwrap
 import argparse
 import traceback
-from .rerank import show_example
+from .utils import show_example
 from concurrent.futures import ProcessPoolExecutor
 from tqdm import tqdm
+from .utils import fixed_code, merge_jsonl, build_paths, build_greedy_path_for_source, read_data
 
 
 def hello():
@@ -38,7 +39,6 @@ def add_idx(input_file_path, output_file_path):
             json.dump(output_data, output_file, ensure_ascii=False)
             output_file.write('\n')
             idx += 1
-
 
 def process_data(input_file_path, output_file_path, args):
     count = 0
@@ -64,7 +64,6 @@ def process_data(input_file_path, output_file_path, args):
                 count += 1
         print(count)
 
-
 def remove_duplicates(input_file_path, output_file_path, args):
     print('*' * 50, 'remove_duplicates')
     seen_combinations = {}
@@ -79,7 +78,6 @@ def remove_duplicates(input_file_path, output_file_path, args):
                 if completion not in seen_combinations[source]:
                     seen_combinations[source].add(completion)
                     output_file.write(json.dumps(data, ensure_ascii=False) + '\n')
-
 
 def extract_matching_data(input_file_path, target_file_path, output_file_path):
     print('*' * 50, 'extract_matching_data')
@@ -100,7 +98,6 @@ def extract_matching_data(input_file_path, target_file_path, output_file_path):
                 output_data = data
                 json.dump(output_data, output_file)
                 output_file.write('\n')
-
 
 def find_most_common_completion(input_file_path, output_file_path):
     # Step 1: Read the original file
@@ -139,7 +136,6 @@ def find_most_common_completion(input_file_path, output_file_path):
             }
             output_file.write(json.dumps(new_data) + '\n')
 
-
 def filter_completions(filtered_file_path, input_file_path, output_file_path):
     print('*'*50,'filter_completions')
 
@@ -157,7 +153,6 @@ def filter_completions(filtered_file_path, input_file_path, output_file_path):
             # If the completion is not in the filtered set, write it to the output file
             if (data['source'], data['completion']) not in filtered_completions:
                 output_file.write(line)
-
 
 def count_source_occurrences(file_path, output_txt_path):
     # Initialize a dictionary to count the occurrences of each source value
@@ -180,7 +175,6 @@ def count_source_occurrences(file_path, output_txt_path):
 
     print(f'Total count of source values with less than 3 occurrences: {less_than_three_count}')
 
-
 def compare_and_save_topk(main_path, remain_path, output_path, k=3):
     main_data, remain_data = read_data(main_path, remain_path)
     all_paths = build_paths(main_data, remain_data, k+1)
@@ -191,69 +185,6 @@ def compare_and_save_topk(main_path, remain_path, output_path, k=3):
                     line = remain_data[source].get(completion, "")
                     if line:
                         out_file.write(line)
-
-def read_data(main_path, remain_path):
-    main_data = {}
-    remain_data = defaultdict(dict)
-
-    with open(main_path, 'r') as file:
-        for line in file:
-            data = json.loads(line)
-            main_data[data['source']] = data['completion']
-
-    with open(remain_path, 'r') as file:
-        for line in file:
-            data = json.loads(line)
-            source = data['source']
-            remain_data[source][data['completion']] = line
-
-    return main_data, remain_data
-
-def build_greedy_path_for_source(main_completion, remain_completions_dict, k):
-    path = [main_completion]
-    path_distances = {comp: Levenshtein.distance(main_completion, comp) for comp in remain_completions_dict}
-
-    while len(path) < k and remain_completions_dict:
-        # 选择下一个点
-        next_completion = max(remain_completions_dict, key=lambda comp: path_distances[comp])
-        next_distance = path_distances[next_completion]
-        
-        # 更新路径和距离
-        path.append(next_completion)
-        del remain_completions_dict[next_completion]
-        del path_distances[next_completion]
-
-        # 仅更新剩余点的累积距离
-        for comp in remain_completions_dict:
-            path_distances[comp] += Levenshtein.distance(next_completion, comp)
-
-    return path
-
-def build_paths(main_data, remain_data, k):
-    all_paths = {}
-    with ProcessPoolExecutor() as executor:
-        # 创建所有任务
-        futures = {executor.submit(build_greedy_path_for_source, main_completion, remain_data[source], k): source 
-                   for source, main_completion in main_data.items() if source in remain_data}
-
-        # 获取结果
-        for future in tqdm(futures, desc="Processing sources"):
-            source = futures[future]
-            path = future.result()
-            all_paths[source] = path
-
-    return all_paths
-
-
-def fixed_code(code):
-    # Regular expression pattern to match '\n   ' but not '\n    '
-    pattern = re.compile(r'\n {3}(?! )')
-
-    # Replace occurrences of '\n   ' with '\n    '
-    fixed_code = re.sub(pattern, '\n    ', code)
-
-    return fixed_code
-
 
 def replace_var_names(code, args):
     python_keywords = set([
@@ -330,7 +261,6 @@ def replace_var_names(code, args):
     replace_name(tree, var_dict_stack, func_dict_stack, current_var_index, current_func_index)
     return astunparse.unparse(tree)
 
-
 def replace_var_names_in_code_blocks(text, args):
     # 找到所有的代码块
     code_blocks = re.findall(r'```python(.*?)```', text, re.DOTALL)
@@ -345,46 +275,12 @@ def replace_var_names_in_code_blocks(text, args):
 
     return text
 
-def merge_jsonl(files, output_file):
-    """
-    合并多个JSONL文件到一个，并更新idx。
-
-    参数:
-    files (list of str): 要合并的JSONL文件列表
-    output_file (str): 输出文件的路径
-
-    返回:
-    None
-    """
-    all_data = []
-
-    # 遍历所有文件
-    for file in files:
-        if os.path.exists(file) and os.path.isfile(file):
-            with open(file, 'r', encoding='utf-8') as f:
-                for line in f:
-                    try:
-                        data = json.loads(line.strip())
-                        all_data.append(data)
-                    except json.JSONDecodeError:
-                        print(f"Warning: Could not decode line in file {file}. Skipping...")
-        else:
-            print(f"Warning: File {file} does not exist or is not a file. Skipping...")
-
-    # 并写入新文件
-    with open(output_file, 'w', encoding='utf-8') as out_f:
-        for idx, data in enumerate(all_data):
-            json.dump(data, out_f)
-            out_f.write('\n')
-
-    print(f"Merge completed. Total data num {idx+1}. Data written to {output_file}")
-
 
 if __name__ == "__main__":
-    input_file_path = '/data/ToRA/src/data/TAL-EN-test/extract.jsonl'
 
 
     parser = argparse.ArgumentParser(description='nodup')
+    parser.add_argument('--input_file', type=str, required=True, help='Path to the input JSONL file')
     parser.add_argument('--save', action="store_true")
     parser.add_argument(
         "--key",
@@ -401,7 +297,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(args)
 
-
+    input_file_path = args.input_file
     dir = os.path.dirname(input_file_path)
     base_name = os.path.splitext(input_file_path)[0]
     # 创建一个临时目录

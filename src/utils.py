@@ -940,4 +940,20 @@ def merge_jsonl(files, output_file):
 
     print(f"Merge completed. Total data num {idx+1}. Data written to {output_file}")
     
+def show_example(file_path, count=-1):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for i, line in enumerate(file):
+            continue
 
+        print(f'Show case {file_path} Total num {i+1}')
+    lines = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for i, line in enumerate(file):
+            if count == -1 or i > count-1:
+                break
+            # print(line)
+            lines.append(json.loads(line))
+            print(json.loads(line))
+
+        return lines
+    

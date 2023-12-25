@@ -36,13 +36,13 @@ def cleanup_directory(directory_path):
 if __name__ == "__main__":
 
     ## create distribution 
-
-
     parser = argparse.ArgumentParser(description='Process file based on method.')
-    parser.add_argument('method', type=str, choices=['distribution', 'similar'], 
-                    help='Method to process the file: "distribution" or "similar"')
-    parser.add_argument('direction', type=str, help='Directory path')
-    parser.add_argument('data', type=str, help='Data file name')
+    parser.add_argument('--method', type=str, choices=['distribution', 'similar'], required=True,
+                        help='Method to process the file: "distribution" or "similar"')
+    parser.add_argument('--direction', type=str, required=True, help='Directory path')
+    parser.add_argument('--data', type=str, required=True, help='Data file name')
+    parser.add_argument('--original_path', type=str, required=True, help='Path to the original JSONL file')
+    parser.add_argument('--remain_path', type=str, required=True, help='Path to the remain JSONL file')
     parser.add_argument('--save', action='store_true', 
                         help='Set this flag to keep intermediate files')
 
@@ -50,9 +50,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     dirr = args.direction
     data = args.data
+    original_path = args.original_path
+    remain_path = args.remain_path
     os.makedirs(dirr, exist_ok=True)
 
-    original_path = './data/gsm_test/extract_main.jsonl'
     distribution_path = f'{dirr}/{data}_distribution.jsonl' 
     error_file = f'{dirr}/Error.jsonl'
     wrong_file = f'{dirr}/Wrong.jsonl'
@@ -130,7 +131,6 @@ if __name__ == "__main__":
         print("attempt times:", count)
      
     ## 更改对应题目
-    remain_path = "./data/gsm_test/extract_remain.jsonl"
     changed_path = f'{dirr}/{data}_remain_changed.jsonl'
     topk_path =  f'{dirr}/{data}_topk.jsonl'
     Same_answer_path = f'{dirr}/{data}_same_answer.jsonl'
