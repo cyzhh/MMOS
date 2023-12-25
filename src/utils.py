@@ -14,7 +14,6 @@ from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor
 from grader import math_equal
 
-
 def process(input_file, output_file, mu, sigma):
     with open(input_file, 'r', encoding='utf-8') as f, open(output_file, 'w', encoding='utf-8') as out:  
         count = 0
@@ -861,10 +860,6 @@ def extract_prompt(input_file_path, output_file_path):
             }
             json.dump(extracted_data, f_out, ensure_ascii=False)
             f_out.write('\n')
-
-def remove(file_path):
-    if os.path.exists(file_path):
-        os.remove(file_path)
 
 def fix(input_file1, input_file2, output_file):
     data1 = []
