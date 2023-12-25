@@ -1,4 +1,4 @@
 # MMOS
 
 ## attack 
-bash src/attack.sh
+  bash src/attack.sh
