@@ -14,8 +14,14 @@
 - ✅ 
 - 🔲 数据集的生成 
 
+## Generate 
+
+    bash scripts/generate.sh
+    python -m src.nodup --save
+
+
 ## Attack
 
-    bash src/attack.sh
+    bash scripts/attack.sh
 
 
