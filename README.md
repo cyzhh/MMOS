@@ -16,11 +16,12 @@
 
 ## Generate 
 
-    bash scripts/infer.sh
     bash scripts/generate.sh
 
 ## Attack
 
     bash scripts/attack.sh
 
+## Rerank 
 
+    bash scripts/rerank.sh
