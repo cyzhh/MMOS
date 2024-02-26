@@ -67,3 +67,6 @@ Due to resource constraints, we performed supervised fine-tuning on [CodeLLaMA 7
 
 - [ToRA](https://github.com/microsoft/ToRA?tab=readme-ov-file)
 
+## 🌟Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=cyzhh/MMOS&type=Date)](https://star-history.com/#cyzhh/MMOS&Date)
