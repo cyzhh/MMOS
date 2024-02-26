@@ -4,14 +4,16 @@
 
 ## 🔥 News
 <!-- - [2024/2/26]  -->
-- ✅ Dataset release
-- 🔲 Models release 
+- [2024/2/27] Models **MMOS-CODE 7B** released at [Quark](https://pan.quark.cn/s/0b69ec84c793) !!
+- [2024/2/26] 🔥🔥🔥Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS) !!
 - 🔲 Arxiv will coming soon! 
 
 <!-- - [2024/1/12] Models ZZ-Math 7B released at [Google Drive](https://drive.google.com/drive/folders/13tpLR0bNLLg1oLkjUuwJT8STCB10uSSS?usp=sharing) or [Quark](https://pan.quark.cn/s/0b69ec84c793) 
 - [2024/1/11] Dataset released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/TAL-SCQ-CN_mix) -->
 
 ## 💡 Introductions
+
+Mix of Minimal Optimal Sets (MMOS) of dataset has two advantages for two aspects, higher performance and lower construction costs.
 
 | Model         | GSM8K 7B | SVAMP 7B | ASDiv 7B | MATH 7B | GSM8K 13B | SVAMP 13B | ASDiv 13B | MATH 13B |
 |---------------|----------|----------|----------|---------|-----------|-----------|-----------|----------|
