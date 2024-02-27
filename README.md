@@ -4,6 +4,7 @@
 
 ## 🔥 News
 <!-- - [2024/2/26]  -->
+- [2024/2/27] Models **MMOS-LLEMMA 7B** show nice performence !!
 - [2024/2/27] Models **MMOS-CODE 7B** released at [Quark](https://pan.quark.cn/s/62a6644c0e02) !!
 - [2024/2/26] 🔥🔥🔥Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS) !!
 - 🔲 Arxiv will coming soon! 
