@@ -32,7 +32,7 @@ Mix of Minimal Optimal Sets (MMOS) of dataset has two advantages for two aspects
 | MMOS             | 7B   | 69.9  | 73.4  | 76.8  | 40.2 | 13B  | 74.8  | 77.0  | 80.0  | 43.2 |
 | MMOS-CODE        | 7B   | 73.9  | 76.4  | 78.6  | 44.3 | 13B  | 77.1  | 77.5  | 81.9  | 48.1 |
 | MMOS-MinCODE     | 7B   | 70.3  | 72.5  | 76.7  | 44.6 | 13B  | -     | -     | -     | -    |
-| MMOS-LLEMMA      | 7B   | 76.5  | 77.7  | 81.4  | 48.8 | 13B  | -     | -     | -     | -    |
+| MMOS-LLEMMA      | 7B   | **76.5**  | **77.7**  | **81.4**  | **48.8** | 13B  | -     | -     | -     | -    |
 
 
 ## 💾 Install
