@@ -1,6 +1,8 @@
 # MMOS
 
-![](./images/first_table.png)
+<img src="./images/first_table.png" width="500" />
+
+ArXiv | [Models](https://pan.quark.cn/s/62a6644c0e02) | [Data](https://huggingface.co/datasets/cyzhh/MMOS) | [Code](https://github.com/cyzhh/MMOS) | 
 
 ## 🔥 News
 <!-- - [2024/2/26]  -->
