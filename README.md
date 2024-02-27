@@ -12,10 +12,10 @@
 
 ## 🔥 News
 <!-- - [2024/2/26]  -->
-- [2024/2/27] 🔥🔥🔥 Models **MMOS-CODE 13B**  and **MMOS-CODE 34B** released at [Quark 13B](https://pan.quark.cn/s/5d5ee083676f) and [Quark 34B](https://pan.quark.cn/s/734ff44143da) !!
-- [2024/2/27] Models **MMOS-LLEMMA 7B** show nice performence !!
-- [2024/2/27] 🔥🔥🔥 Models **MMOS-CODE 7B** released at [Quark 7B](https://pan.quark.cn/s/62a6644c0e02) !!
-- [2024/2/26] 🔥🔥🔥 Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS)!!
+- [2024/2/27] 🔥🔥🔥Models **MMOS-LLEMMA 7B** show nice performence and released at [MMOS-LLEMMA 7B](https://pan.quark.cn/s/59024b402c1b) !!
+- [2024/2/27] 🔥🔥 Models **MMOS-CODE 13B**  and **MMOS-CODE 34B** released at [MMOS-CODE 13B](https://pan.quark.cn/s/5d5ee083676f) and [MMOS-CODE 34B](https://pan.quark.cn/s/734ff44143da) !!
+- [2024/2/27] 🔥 Models **MMOS-CODE 7B** released at [MMOS-CODE 7B](https://pan.quark.cn/s/62a6644c0e02) !!
+- [2024/2/26] 🔥 Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS) !!
 - 🔲 Arxiv will coming soon! 
 
 <!-- - [2024/1/12] Models ZZ-Math 7B released at [Google Drive](https://drive.google.com/drive/folders/13tpLR0bNLLg1oLkjUuwJT8STCB10uSSS?usp=sharing) or [Quark](https://pan.quark.cn/s/0b69ec84c793) 
