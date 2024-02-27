@@ -1,8 +1,14 @@
 # MMOS
 
-<img src="./images/first_table.png" width="500" />
 
-ArXiv | [Models](https://pan.quark.cn/s/62a6644c0e02) | [Data](https://huggingface.co/datasets/cyzhh/MMOS) | [Code](https://github.com/cyzhh/MMOS) | 
+<p align="center">
+  <img src="./images/first_table.png" width="500" />
+</p>
+
+<p align="center">
+  | ArXiv | <a href="https://pan.quark.cn/s/62a6644c0e02">Models</a> | <a href="https://huggingface.co/datasets/cyzhh/MMOS">Data</a> | <a href="https://github.com/cyzhh/MMOS">Code</a> |
+</p>
+
 
 ## 🔥 News
 <!-- - [2024/2/26]  -->
