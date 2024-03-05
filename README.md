@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  | ArXiv | <a href="https://pan.quark.cn/s/2d16e640ed07">Models</a> | <a href="https://huggingface.co/datasets/cyzhh/MMOS">Data</a> | <a href="https://github.com/cyzhh/MMOS">Code</a> |
+  | <a href="https://arxiv.org/abs/2403.00799">ArXiv | <a href="https://pan.quark.cn/s/2d16e640ed07">Models</a> | <a href="https://huggingface.co/datasets/cyzhh/MMOS">Data</a> | <a href="https://github.com/cyzhh/MMOS">Code</a> |
 </p>
 
 
@@ -16,7 +16,7 @@
 - [2024/2/27] 🔥🔥 Models **MMOS-CODE 13B**  and **MMOS-CODE 34B** released at [MMOS-CODE 13B](https://pan.quark.cn/s/5d5ee083676f) and [MMOS-CODE 34B](https://pan.quark.cn/s/734ff44143da) !!
 - [2024/2/27] 🔥 Models **MMOS-CODE 7B** released at [MMOS-CODE 7B](https://pan.quark.cn/s/62a6644c0e02) !!
 - [2024/2/26] 🔥 Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS) !!
-- 🔲 Arxiv will coming soon! 
+- [2024/2/23] 🔥🔥🔥Arxiv released at [An Empirical Study of Data Ability Boundary in LLMs' Math Reasoning](https://arxiv.org/abs/2403.00799) ~ 
 
 <!-- - [2024/1/12] Models ZZ-Math 7B released at [Google Drive](https://drive.google.com/drive/folders/13tpLR0bNLLg1oLkjUuwJT8STCB10uSSS?usp=sharing) or [Quark](https://pan.quark.cn/s/0b69ec84c793) 
 - [2024/1/11] Dataset released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/TAL-SCQ-CN_mix) -->
