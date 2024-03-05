@@ -91,6 +91,19 @@ Due to resource constraints, we performed supervised fine-tuning on [CodeLLaMA 7
 
     bash scripts/infer.sh
 
+## Citations
+
+If you find this repository helpful, please consider citing our paper:
+
+    @misc{chen2024empirical,
+          title={An Empirical Study of Data Ability Boundary in LLMs' Math Reasoning}, 
+          author={Zui Chen and Yezeng Chen and Jiaqi Han and Zhijie Huang and Ji Qi and Yi Zhou},
+          year={2024},
+          eprint={2403.00799},
+          archivePrefix={arXiv},
+          primaryClass={cs.CL}
+    }
+
 ## 😇 Acknowledgements
 
 - [ToRA](https://github.com/microsoft/ToRA?tab=readme-ov-file)
