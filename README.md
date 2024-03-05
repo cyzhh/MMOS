@@ -1,10 +1,10 @@
-<p align="center">
-  # MMOS
-</p>
+<h1 align="center">MMOS</h1>
 
-<p align="center">
-  [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/arithmetic-reasoning-on-gsm8k)](https://paperswithcode.com/sota/arithmetic-reasoning-on-gsm8k?p=an-empirical-study-of-data-ability-boundary)  [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/math-word-problem-solving-on-svamp)](https://paperswithcode.com/sota/math-word-problem-solving-on-svamp?p=an-empirical-study-of-data-ability-boundary)  [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/math-word-problem-solving-on-asdiv-a)](https://paperswithcode.com/sota/math-word-problem-solving-on-asdiv-a?p=an-empirical-study-of-data-ability-boundary) [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/math-word-problem-solving-on-math)](https://paperswithcode.com/sota/math-word-problem-solving-on-math?p=an-empirical-study-of-data-ability-boundary)
-</p>
+
+
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/arithmetic-reasoning-on-gsm8k)](https://paperswithcode.com/sota/arithmetic-reasoning-on-gsm8k?p=an-empirical-study-of-data-ability-boundary)  [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/math-word-problem-solving-on-svamp)](https://paperswithcode.com/sota/math-word-problem-solving-on-svamp?p=an-empirical-study-of-data-ability-boundary)  [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/math-word-problem-solving-on-asdiv-a)](https://paperswithcode.com/sota/math-word-problem-solving-on-asdiv-a?p=an-empirical-study-of-data-ability-boundary) [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/an-empirical-study-of-data-ability-boundary/math-word-problem-solving-on-math)](https://paperswithcode.com/sota/math-word-problem-solving-on-math?p=an-empirical-study-of-data-ability-boundary)
+
 
 <p align="center">
   <img src="./images/first_table.png" width="500" />
