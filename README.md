@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  | <a href="https://arxiv.org/abs/2403.00799">ArXiv | <a href="https://pan.quark.cn/s/2d16e640ed07">Models</a> | <a href="https://huggingface.co/datasets/cyzhh/MMOS">Data</a> | <a href="https://github.com/cyzhh/MMOS">Code</a> |
+  | <a href="https://arxiv.org/abs/2403.00799">ArXiv</a> | <a href="https://pan.quark.cn/s/2d16e640ed07">Models</a> | <a href="https://huggingface.co/datasets/cyzhh/MMOS">Data</a> | <a href="https://github.com/cyzhh/MMOS">Code</a> |
 </p>
 
 
