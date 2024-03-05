@@ -91,7 +91,7 @@ Due to resource constraints, we performed supervised fine-tuning on [CodeLLaMA 7
 
     bash scripts/infer.sh
 
-## Citations
+## 📜 Citations
 
 If you find this repository helpful, please consider citing our paper:
 
