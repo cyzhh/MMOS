@@ -21,6 +21,7 @@
 
 
 ## 🔥 News
+- [2024/3/8] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence with self-consistency and k=50 !!
 - [2024/2/28] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence and released at [MMOS-DeepSeekMath 7B](https://pan.quark.cn/s/b939a0510658) !!
 - [2024/2/27] 🔥🔥🔥Models **MMOS-LLEMMA 7B** show nice performence and released at [MMOS-LLEMMA 7B](https://pan.quark.cn/s/59024b402c1b) !!
 - [2024/2/27] 🔥🔥 Models **MMOS-CODE 13B**  and **MMOS-CODE 34B** released at [MMOS-CODE 13B](https://pan.quark.cn/s/5d5ee083676f) and [MMOS-CODE 34B](https://pan.quark.cn/s/734ff44143da) !!
@@ -50,6 +51,7 @@ Mix of Minimal Optimal Sets (MMOS) of dataset has two advantages for two aspects
 | **MMOS-MinCODE**     | 7B   | 70.3  | 72.5  | 76.7  | 44.6 | 13B  | -     | -     | -     | -    | 34B  | -     | -     | -     | -    |
 | [MMOS-LLEMMA](https://pan.quark.cn/s/59024b402c1b)      | 7B   | **76.5**  | **77.7**  | **81.4**  | **48.8** | 13B  | -     | -     | -     | -    | 34B  | -     | -    | -     | -    |
 | [MMOS-DeepSeekMath](https://pan.quark.cn/s/b939a0510658)      | 7B   | **80.5**  | **79.3**  | **87.6**  | **55.0** | 13B  | -     | -     | -     | -    | 34B  | -     | -    | -     | -    |
+| MMOS-DeepSeekMath(SC,k=50)    | 7B   | **86.0**  | -  | -  | - | 13B  | -     | -     | -     | -    | 34B  | -     | -    | -     | -    |
 
 <!-- | LLAMA-2          | 7B   | 13.3  | 38.0  | 50.7  | 4.1  | 13B  | 24.3  | 43.1  | 56.3  | 6.3  | 34B  | -     | -     | -     | -    |
 | Code Llama      | 7B   | 10.5  | -     | -     | 4.5    | 13B  | -    | -     | -     | -    | 34B  | 29.6     | -     | -     | 12.2   |
