@@ -21,6 +21,7 @@
 
 
 ## 🔥 News
+- [2024/3/30] 🔥🔥🔥Update result on **MMOS-Code 34B** and **MMOS-LLEMMA 34B** Notice the vllm and transformers version.
 - [2024/3/8] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence with self-consistency and k=50 !!
 - [2024/2/28] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence and released at [MMOS-DeepSeekMath 7B](https://pan.quark.cn/s/b939a0510658) !!
 - [2024/2/27] 🔥🔥🔥Models **MMOS-LLEMMA 7B** show nice performence and released at [MMOS-LLEMMA 7B](https://pan.quark.cn/s/59024b402c1b) !!
@@ -47,13 +48,13 @@ Mix of Minimal Optimal Sets (MMOS) of dataset has two advantages for two aspects
 | TORA             | 7B   | 68.8  | 68.2  | 73.9  | 40.1 | 13B  | 72.7  | 72.9  | 77.2  | 43.0 | 34B  | -     | -     | -     | -    |
 | TORA-CODE        | 7B   | 72.6  | 70.4  | 78.7  | 44.6 | 13B  | 75.8  | 75.7  | 81.4  | 48.1 | 34B  | **80.7**   | **80.5** | 84.2 | **50.8** |
 | **MMOS**             | 7B   | 69.9  | 73.4  | 76.8  | 40.2 | 13B  | 74.8  | 77.0  | 80.0  | 43.2 | 34B  | -     | -     | -     | -    |
-| [MMOS-CODE](https://pan.quark.cn/s/ca1319076367)        | 7B   | 73.9  | 76.4  | 78.6  | 44.3 | 13B  | **77.1**  | **77.5**  | **81.9**  | **48.1** | 34B   | 80.4  | 80.6  | **85.1**  | 49.5 |
+| [MMOS-CODE](https://pan.quark.cn/s/ca1319076367)        | 7B   | 73.9  | 76.4  | 78.6  | 44.3 | 13B  | **77.1**  | **77.5**  | **81.9**  | **48.1** | 34B   |81.7|81.9|82.8|48.8|
 | **MMOS-MinCODE**     | 7B   | 70.3  | 72.5  | 76.7  | 44.6 | 13B  | -     | -     | -     | -    | 34B  | -     | -     | -     | -    |
-| [MMOS-LLEMMA](https://pan.quark.cn/s/59024b402c1b)      | 7B   | **76.5**  | **77.7**  | **81.4**  | **48.8** | 13B  | -     | -     | -     | -    | 34B  | -     | -    | -     | -    |
+| [MMOS-LLEMMA](https://pan.quark.cn/s/59024b402c1b)      | 7B   | **76.5**  | **77.7**  | **81.4**  | **48.8** | 13B  | -     | -     | -     | -    | 34B  |82.8|81.8|84.8|51.3|
 | [MMOS-DeepSeekMath](https://pan.quark.cn/s/b939a0510658)      | 7B   | **80.5**  | **79.3**  | **87.6**  | **55.0** | 13B  | -     | -     | -     | -    | 34B  | -     | -    | -     | -    |
 | MMOS-DeepSeekMath(SC,k=50)    | 7B   | **87.2**  | -  | -  | **63.7** | 13B  | -     | -     | -     | -    | 34B  | -     | -    | -     | -    |
 
-<!-- | LLAMA-2          | 7B   | 13.3  | 38.0  | 50.7  | 4.1  | 13B  | 24.3  | 43.1  | 56.3  | 6.3  | 34B  | -     | -     | -     | -    |
+<!-- | LLAMA-2          | 7B   | 13.3  | 38.0  | 50.7  | 4.1  | 13B  | 24.3  | 43.1  | 56.3  | 6.3  | 34B  | -     | -     | -     | -    |  
 | Code Llama      | 7B   | 10.5  | -     | -     | 4.5    | 13B  | -    | -     | -     | -    | 34B  | 29.6     | -     | -     | 12.2   |
 | LLEMMA     | 7B   | 36.4  | -     | -     | 18    | 13B  | -    | -     | -     | -    | 34B  | 51.5     | -     | -     | 25   |
 | LLAMA-2 SFT      | 7B   | 41.3  | 31.9  | 47.4  | 7.2  | 13B  | 51.1  | 46.3  | 58.6  | 9.2  | 34B  | -     | -     | -     | -    |
