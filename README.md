@@ -21,7 +21,7 @@
 
 
 ## 🔥 News
-- [2024/6/22] Revised the article and added attempts on automatic theorem proving tasks.
+- [2024/6/22] Revised the article and added attempts on automatic theorem proving tasks. Codes are in [MMOS-F2F](https://github.com/Zui-C/MMOS-F2F).
 - [2024/3/30] Update result on **MMOS-Code 34B** and **MMOS-LLEMMA 34B** Notice the vllm and transformers version.
 - [2024/3/8] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence with self-consistency and k=50 !!
 - [2024/2/28] 🔥 Models **MMOS-DeepSeekMath 7B** show nice performence and released at [MMOS-DeepSeekMath 7B](https://pan.quark.cn/s/b939a0510658) !!
