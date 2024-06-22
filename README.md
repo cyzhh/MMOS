@@ -12,7 +12,7 @@
 </div>
 
 <p align="center">
-  <img src="./images/first_table.png" width="500" />
+  <img src="./images/first_table2.jpg" width="500" />
 </p>
 
 <p align="center">
@@ -21,13 +21,14 @@
 
 
 ## 🔥 News
-- [2024/3/30] 🔥🔥🔥Update result on **MMOS-Code 34B** and **MMOS-LLEMMA 34B** Notice the vllm and transformers version.
+- [2024/6/22] Revised the article and added attempts on automatic theorem proving tasks.
+- [2024/3/30] Update result on **MMOS-Code 34B** and **MMOS-LLEMMA 34B** Notice the vllm and transformers version.
 - [2024/3/8] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence with self-consistency and k=50 !!
-- [2024/2/28] 🔥🔥🔥Models **MMOS-DeepSeekMath 7B** show nice performence and released at [MMOS-DeepSeekMath 7B](https://pan.quark.cn/s/b939a0510658) !!
-- [2024/2/27] 🔥🔥🔥Models **MMOS-LLEMMA 7B** show nice performence and released at [MMOS-LLEMMA 7B](https://pan.quark.cn/s/59024b402c1b) !!
-- [2024/2/27] 🔥🔥 Models **MMOS-CODE 13B**  and **MMOS-CODE 34B** released at [MMOS-CODE 13B](https://pan.quark.cn/s/5d5ee083676f) and [MMOS-CODE 34B](https://pan.quark.cn/s/734ff44143da) !!
+- [2024/2/28] 🔥 Models **MMOS-DeepSeekMath 7B** show nice performence and released at [MMOS-DeepSeekMath 7B](https://pan.quark.cn/s/b939a0510658) !!
+- [2024/2/27] 🔥 Models **MMOS-LLEMMA 7B** show nice performence and released at [MMOS-LLEMMA 7B](https://pan.quark.cn/s/59024b402c1b) !!
+- [2024/2/27] 🔥 Models **MMOS-CODE 13B**  and **MMOS-CODE 34B** released at [MMOS-CODE 13B](https://pan.quark.cn/s/5d5ee083676f) and [MMOS-CODE 34B](https://pan.quark.cn/s/734ff44143da) !!
 - [2024/2/27] 🔥 Models **MMOS-CODE 7B** released at [MMOS-CODE 7B](https://pan.quark.cn/s/62a6644c0e02) !!
-- [2024/2/26] 🔥 Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS) !!
+- [2024/2/26] 🔥🔥🔥 Dataset **MMOS** released at [😊 HuggingFace](https://huggingface.co/datasets/cyzhh/MMOS) !!
 - [2024/2/23] 🔥🔥🔥Arxiv released at [An Empirical Study of Data Ability Boundary in LLMs' Math Reasoning](https://arxiv.org/abs/2403.00799) ~ 
 
 <!-- - [2024/1/12] Models ZZ-Math 7B released at [Google Drive](https://drive.google.com/drive/folders/13tpLR0bNLLg1oLkjUuwJT8STCB10uSSS?usp=sharing) or [Quark](https://pan.quark.cn/s/0b69ec84c793) 
