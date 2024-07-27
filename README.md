@@ -89,6 +89,18 @@ The DATA, which we publish at [😊 HuggingFace](https://huggingface.co/datasets
 
 If you are interested in our work, we will publish details about the data processing aspects after the paper is published.
 
+## Create your own MMOS dataset
+
+Following `scripts/generate.sh`:
+
+0. Prepare your sampling results.
+1. Combine the results.
+2. Extract the true cases.
+3. Dedup the cases.
+4. (Filter) and rerank.
+
+
+
 ## ⚙️ Auto Problem Generator
 
 You can generate a data set for testing the numerical robustness of model performance by executing the following script command：
